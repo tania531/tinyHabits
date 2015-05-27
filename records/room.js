@@ -1,7 +1,7 @@
 angular.module('tinyHabitsTracker', [])
-.controller('roomCtrl', ['$scope', function($scope){
-  console.info('room contoller initialized');
-  $scope.room = '';
+.controller('habitCtrl', ['$scope', function($scope){
+  console.info('habit contoller initialized');
+  $scope.habit = '';
   $scope.addRoom = function(room){
     $scope.room = room;
   };

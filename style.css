@@ -1,23 +1,21 @@
 /* Styles go here */
 
-.container {
-  margin:10px;
-  margin:auto 0;
-  text-align:center;
-  border: 1px solid blue;
+#results {
+  margin: 20px;
 }
-
-input {
+td {
+  padding:10px;
+}
+th {
+  font-weight: bold;
+  color:blue;
+}
+h1{
+  text-align: center;
+  /*margin:auto;*/
   margin:20px 10px;
 }
+input {
+  margin: 10px 20px 10px 5px;
 
-th{
-  padding:10px;
-  margin:10px;
-}
-
-table {
-  width:400px;
-  height:300px;
-  border: 1px solid blue;
 }

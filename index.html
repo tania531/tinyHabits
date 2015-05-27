@@ -1,64 +1,58 @@
 <!DOCTYPE html>
-<html ng-app="tinyHabitsTracker">
+<html ng-app="tinyHabits">
 
 <head>
-    <script data-require="jquery@*" data-semver="2.1.4" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+  <script data-require="jquery@2.1.3" data-semver="2.1.4" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <link data-require="bootstrap-css@*" data-semver="3.3.1" rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+  <link data-require="bootstrap-css@*" data-semver="3.3.1" rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootswatch/3.3.4/cerulean/bootstrap.min.css" />
+  <script data-require="bootstrap@*" data-semver="3.3.2" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
-  <link data-require="bootstrap@*" data-semver="3.3.2" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
-  <link data-require="bootstrap-css@*" data-semver="3.3.1" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
-  <script data-require="bootstrap@*" data-semver="3.3.2" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-  <!-- <link rel="stylesheet" href="style.css" /> -->
-  <script src="room.js"></script>
+  <script data-require="angular.js@*" data-semver="1.4.0-rc.0" src="https://code.angularjs.org/1.4.0-rc.0/angular.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js"></script>
 </head>
 
-<body ng-controller="roomCtrl">
+<body ng-controller="habitCtrl">
   <div class="container">
-    <h1>&nbsp;&nbsp;Tiny Habits Tracker</h1>
+    <h1> Tiny Habit Tracker </h1>
+    <label for="room">New Habit Name:</label>
+    <input type="text" id="habitName" ng-model="habit.name" />
+    <label for="room">New Habit Tiny Action:</label>
+    <input type="text" id="room" ng-model="habit.tinyAction" />
+    <label for="room">New Habit Trigger:</label>
+    <input type="text" id="room" ng-model="habit.trigger" />
     <br />
-    <label for="habit">&nbsp;&nbsp;New Habit:</label>
-    <input type="text" ng-model="room" />
-    <button id="habitBtn" ng-click="addHabit(habit)">Add Habit</button>
-    {{ habit }}
-    <br />
-    <br />
-    <label for="name">&nbsp;&nbsp;Behavior:</label>
-    <input type="text" ng-model="name" />
-    <button id="nameBtn" ng-click="addName(name)">Add Behavior</button>
-    {{ behavior }}
-    <br />
-    <br />
-    <label for="count">&nbsp;&nbsp;Trigger:</label>
-    <input type="number" ng-model="count" />
-    <button id="countBtn" ng-click="addCount(count)">Add Trigger</button>
-    {{ trigger }}
-    <br />
-    <br />
-    <label for="name">&nbsp;&nbsp;Reward:</label>
-    <input type="number" ng-model="cost" />
-    <button id="nameBtn" ng-click="addName(name)">Reward</button>
-    {{ cost | currency }}
-     <br />
-    <br />
-    <label for="completed"> &nbsp;&nbsp;Completed: &nbsp;&nbsp;</label>
-    <input type="checkbox" id="completed">
-     <br />
-    <br />
-    <table>
+    <label for="room">New Habit compliment:</label>
+    <input type="text" id="room" ng-model="habit.compliment" />
+    <button id="newHabit" ng-click="addHabit(habit)" type="submit">Add Habit</button>
+
+    <table class="table">
       <thead>
         <tr>
-          <th>&nbsp;&nbsp;Date:&nbsp;&nbsp;&nbsp;&nbsp;</th>
-          <th>&nbsp;&nbsp;Habit:&nbsp;&nbsp;&nbsp;&nbsp;</th>
-          <th>&nbsp;&nbsp;Complete:&nbsp;&nbsp;&nbsp;&nbsp;</th>
+          <th>Habit Name</th>
+          <th>Tiny Action</th>
+          <th>Trigger</th>
+          <th>Compliment</th>
+          <th>Date</th>
+          <th>Completed</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>5-24-2015&nbsp;&nbsp;&nbsp;&nbsp;</td><td>&nbsp;&nbsp;Daily walks&nbsp;&nbsp;&nbsp;&nbsp;</td><td>&nbsp;&nbsp;&nbsp;&nbsp;X&nbsp;&nbsp;&nbsp;&nbsp;</td>
-        </tr>
-      </tbody>
+      <tr ng-repeat='habit in habits track by $index' ng-hide="checked">
+        <td>{{habit.name}}</td>
+        <td>{{habit.tinyAction}}</td>
+        <td>{{habit.trigger}}</td>
+        <td>{{habit.compliment}}</td>
+        <td>{{habit.date}}</td>
+        <td>
+          <input type="checkbox" ng-model="checked" />
+        </td>
+      </tr>
+    </tbody>
     </table>
-   
-  </div><!--end container-->
+
+
+  </div>
 </body>
+
 </html>

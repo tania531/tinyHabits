@@ -1,0 +1,27 @@
+/* Styles go here */
+
+.container {
+  margin:10px;
+  margin:auto 0;
+  text-align:center;
+  border: 1px solid blue;
+}
+
+input {
+  margin:20px 10px;
+}
+
+th{
+  padding:10px;
+  margin:10px;
+}
+
+table {
+  width:400px;
+  height:300px;
+  border: 1px solid blue;
+}
+h1{
+  text-align: center;
+  margin:auto;
+}
