@@ -1,0 +1,90 @@
+<html>
+  <head>
+    <script data-require="jquery@2.1.3" data-semver="2.1.4" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <link data-require="bootstrap-css@*" data-semver="3.3.1" rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+    <link data-require="bootstrap-css@*" data-semver="3.3.1" rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootswatch/3.3.4/cerulean/bootstrap.min.css" />
+    <script data-require="bootstrap@*" data-semver="3.3.2" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <script data-require="angular.js@*" data-semver="1.4.0-rc.0" src="https://code.angularjs.org/1.4.0-rc.0/angular.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/1.1.1/angularfire.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id='messagesDiv'></div>
+    <input type='text' id='nameInput' placeholder='Name'>
+    <input type='text' id='messageInput' placeholder='Message'>
+    <button ng-click="setDate(book)">update the date</button>
+
+    <h2>Formatted</h2>
+    {{book.title}}<br />
+    {{book.author}}<br />
+    {{book.date|date:"medium"}}<br />
+
+    <h2>Raw</h2>
+    <pre>{{book|json}}</pre>
+
+    <script>
+      var fbth = new Firebase('https://tinyhabits.firebaseio-demo.com/book1');
+      var myDataRef = new Firebase('https://tinyhabits.firebaseio-demo.com/');
+      var app = angular.module('app', ['firebase']);
+app.controller('ctrl', function ($scope, BookFactory) {
+    // create a synchronized array with a customized version
+    // of $FirebaseArray
+    $scope.book = new BookFactory(fb);
+
+    // changes the date on a book record, note that we're working
+    // with Date objects here
+    $scope.setDate = function(book) {
+        book.date = new Date();
+        book.$save();
+    };
+});
+
+/**
+ * Add a Book factory object which parses dates
+ */
+app.factory('BookFactory', function ($firebaseObject) {
+    return $firebaseObject.$extend({
+        /**
+         * Called each time there is an update from the server
+         * to update our Book data
+         */
+        $$updated: function (snap) {
+            // call the super
+            var changed = $firebaseObject.prototype
+                .$$updated.apply(this, arguments);
+            // manipulate the date
+            if( changed ) {
+               this.date = new Date(this.date||0);
+            }
+            // inform the sync manager that it changed
+            return changed;
+        },
+
+        /**
+         * Used when our book is saved back to the server
+         * to convert our dates back to JSON
+         */
+        toJSON: function() {
+            return angular.extend({}, this, {
+                // revert Date objects to json data
+                date: this.date? this.date.getTime() : null
+            });
+        }
+    });
+});
+
+/*********
+ RESET DEMO DATA EACH TIME THE PAGE LOADS
+ *********/
+fbth.set({
+    title: "Grapes of Wrath",
+    author: "John Steinbeck",
+    date: Date.now() - 3600 * 1000 * 24 * 72 // 72 days ago
+});
+      
+    </script>
+  </body>
+</html>

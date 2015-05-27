@@ -19,3 +19,26 @@ input {
   margin: 10px 20px 10px 5px;
 
 }
+
+pre {
+    padding: 20px;
+    font-size: 16px;
+    line-height: 20px;
+    background-color: #fafafa;
+    border: 1px solid #999;
+    display: block;
+    border-radius: 10px;
+    white-space: pre-wrap;
+    /* css-3 */
+    white-space: -moz-pre-wrap;
+    /* Mozilla, since 1999 */
+    white-space: -pre-wrap;
+    /* Opera 4-6 */
+    white-space: -o-pre-wrap;
+    /* Opera 7 */
+    word-wrap: break-word;
+    /* Internet Explorer 5.5+ */
+}
+.error {
+    color: red;
+}

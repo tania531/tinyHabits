@@ -8,6 +8,9 @@
   <script data-require="bootstrap@*" data-semver="3.3.2" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
   <script data-require="angular.js@*" data-semver="1.4.0-rc.0" src="https://code.angularjs.org/1.4.0-rc.0/angular.js"></script>
+  <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+  <!-- AngularFire -->
+  <script src="https://cdn.firebase.com/libs/angularfire/1.1.1/angularfire.min.js"></script>
   <link rel="stylesheet" href="style.css" />
   <script src="script.js"></script>
 </head>
@@ -24,7 +27,7 @@
     <br />
     <label for="room">New Habit compliment:</label>
     <input type="text" id="room" ng-model="habit.compliment" />
-    <button id="newHabit" ng-click="addHabit(habit)" type="submit">Add Habit</button>
+    <button id="newHabit" ng-click="addHabit(habit)" type="submit" class="btn btn-primary">Add Habit</button>
 
     <table class="table">
       <thead>
@@ -51,6 +54,9 @@
     </tbody>
     </table>
 
+    <div id="fbList">
+    fb List name: {{habitList[0].compliment}}
+    </div>
 
   </div>
 </body>
