@@ -21,6 +21,9 @@ app.controller('habitCtrl',function($scope, $firebaseObject, $firebaseArray){
     $scope.habit = {};
     // console.log($scope.habitList);
   };
+  $scope.editHabit = function(habit){
+    $scope.habit = habit;
+  };
 
   $scope.deleteHabit = function(habit){
     habitList.$remove(habit);

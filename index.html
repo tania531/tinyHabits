@@ -39,6 +39,7 @@
           <th>Compliment</th>
           <th>Date</th>
           <th>Completed</th>
+          <th>Edit</th>
           <th>Delete</th>
         </tr>
       </thead>
@@ -50,7 +51,8 @@
         <td>{{h.compliment}}</td>
         <td>{{h.date}}</td>
         <td><input type="checkbox" ng-model="checked" /></td>
-        <td><button ng-click="deleteHabit(h)" class="btn btn-warning">Delete Habit  </button>
+        <td><button ng-click="editHabit(h)" class="btn btn-info btn-xs">Edit Habit  </button>
+          <td><button ng-click="deleteHabit(h)" class="btn btn-warning btn-xs">Delete Habit  </button>
       </tr>
 
     </table>
