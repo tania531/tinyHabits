@@ -27,10 +27,11 @@
     <br />
     <label for="room">New Habit compliment:</label>
     <input type="text" id="room" ng-model="habit.compliment" />
+    <!-- <input type="date" id="date" ng-model="habit.date" /> -->
     <button id="newHabit" ng-click="addHabit(habit)" type="submit" class="btn btn-primary">Add Habit</button>
 
-    <table class="table">
-      <thead>
+    <table id="fbList" class="table">
+       <thead>
         <tr>
           <th>Habit Name</th>
           <th>Tiny Action</th>
@@ -38,25 +39,21 @@
           <th>Compliment</th>
           <th>Date</th>
           <th>Completed</th>
+          <th>Delete</th>
         </tr>
       </thead>
-      <tbody>
-      <tr ng-repeat='habit in habits track by $index' ng-hide="checked">
-        <td>{{habit.name}}</td>
-        <td>{{habit.tinyAction}}</td>
-        <td>{{habit.trigger}}</td>
-        <td>{{habit.compliment}}</td>
-        <td>{{habit.date}}</td>
-        <td>
-          <input type="checkbox" ng-model="checked" />
-        </td>
-      </tr>
-    </tbody>
-    </table>
 
-    <div id="fbList">
-    fb List name: {{habitList[0].compliment}}
-    </div>
+      <tr ng-repeat='h in habitList track by $index' ng-hide="checked">
+        <td>{{h.name}}</td>
+        <td>{{h.tinyAction}}</td>
+        <td>{{h.trigger}}</td>
+        <td>{{h.compliment}}</td>
+        <td>{{h.date}}</td>
+        <td><input type="checkbox" ng-model="checked" /></td>
+        <td><button ng-click="deleteHabit(h)" class="btn btn-warning">Delete Habit  </button>
+      </tr>
+
+    </table>
 
   </div>
 </body>
