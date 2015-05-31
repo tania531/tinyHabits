@@ -1,11 +1,5 @@
-
-var app = angular.module("tinyHabits", ['firebase']);
-// app.config(function($stateProvider, $urlRouterProvider){
-//   $urlRouterProvider.otherwise('/');
-//   $stateProvider
-//   .state('list', {url:'/', templateUrl: 'list.html', controller:'habitCtrl'});
-// });
-app.controller('habitCtrl', function($scope,  $firebaseArray){
+angular.module("tinyHabits")
+.controller('listCtrl', function($scope,  $firebaseArray){
   var ref = new Firebase("https://tinyhabits.firebaseio.com/");
 
   var habitList = $firebaseArray(new Firebase("https://tinyhabits.firebaseio.com/"));

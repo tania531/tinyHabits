@@ -1,0 +1,60 @@
+<div class="container">
+  <h1> Tiny Habit Tracker </h1>
+  <h4>Based on the Work of BJ Fogg</h4>
+  <div class="row" ng-hide="display">
+    <label for="room">New Habit Name:</label>
+    <input type="text" id="habitName" ng-model="habit.name" />
+    <label for="room">New Habit Tiny Action:</label>
+    <input type="text" id="room" ng-model="habit.tinyAction" />
+    <label for="room">New Habit Trigger:</label>
+    <input type="text" id="room" ng-model="habit.trigger" />
+    <br />
+    <label for="room">New Habit compliment:</label>
+    <input type="text" id="room" ng-model="habit.compliment" />
+    <!-- <input type="date" id="date" ng-model="habit.date" /> -->
+    <button ng-hide="habit.$id" id="newHabit" ng-click="addHabit(habit)" type="submit" class="btn btn-primary">Add Habit</button>
+    <button ng-show="habit.$id" id="updateHabit" ng-click="updateHabit(habit)" type="submit" class="btn btn-primary">Update Habit</button>
+    <table id="fbList" class="table" >
+       <thead>
+        <tr>
+          <th>Habit Name</th>
+          <th>Tiny Action</th>
+          <th>Trigger</th>
+          <th>Compliment</th>
+          <th>Date</th>
+          <th>Completed</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tr ng-repeat='h in habitList track by $index' ng-hide="checked">
+        <td><a href="#" ng-click="showDetails(h)" >{{h.name}}</a></td>
+        <td>{{h.tinyAction}}</td>
+        <td>{{h.trigger}}</td>
+        <td>{{h.compliment}}</td>
+        <td>{{h.date | date}}</td>
+        <td><input type="checkbox" ng-model="checked" /></td>
+        <td><button ng-click="editHabit(h)" class="btn btn-info btn-xs">Edit Habit  </button>
+          <td><button ng-click="deleteHabit(h)" class="btn btn-warning btn-xs">Delete Habit  </button>
+      </tr>
+    </table>
+  </div> <!-- row list view -->
+  <div class="row" ng-show="display">
+    <div id="details"><h5>Detail View</h5>
+
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+        <ul>
+          <li>{{habit.name}} </li>
+          <li>{{habit.trigger}} </li>
+          <li>{{habit.compliment}} </li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <button type="submit" id="listBtn" ng-click="showList()"  class="btn btn-primary">Back to List View</button>
+      </div>
+
+    </div><!-- end row detail view-->
+
+  </div>
+
+</div>
