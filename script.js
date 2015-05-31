@@ -11,11 +11,11 @@ app.controller('habitCtrl', function($scope,  $firebaseArray){
   var habitList = $firebaseArray(new Firebase("https://tinyhabits.firebaseio.com/"));
 
   $scope.habitList = habitList;
-  $scope.habit = '';
-  $scope.habit.new = true;
+  $scope.habit = null;
 
   $scope.showList = function(){
-    $scope.display=false;
+    $scope.habit = null;
+    $scope.display = false;
   };
 
   $scope.showDetails = function(habit){
@@ -43,7 +43,6 @@ app.controller('habitCtrl', function($scope,  $firebaseArray){
   $scope.editHabit = function(habit){
 
     $scope.habit = habit;
-    $scope.habit.new = true;
     console.log('$scope.habit.new: ', $scope.habit.new);
 
     // habitList.$save(habit).then(function(ref){
@@ -52,12 +51,10 @@ app.controller('habitCtrl', function($scope,  $firebaseArray){
     // habitList.$save(habit);
   };
 
-  $scope.udpateHabit = function(habit){
-
-    $scope.habit.new = false;
+  $scope.updateHabit = function(habit){
     console.log(habit);
     habitList.$save(habit).then(function(ref){
-      $scope.habit.new = true;
+      $scope.habit = null;
     });
     habitList.$save(habit);
   };
