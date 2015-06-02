@@ -1,8 +1,6 @@
 <div class="container">
   <h1> Tiny Habit Tracker </h1>
   <h4>Based on the Work of BJ Fogg, Charles Duhigg and Others</h4>
-  <h6><a ui-sref='home'>Home</a></h6>
-
   <div class="navbar-header">
     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
       <span class="sr-only">Toggle navigation</span>
@@ -10,7 +8,7 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="#">Brand</a>
+    <!-- <a class="navbar-brand" href="#">Brand</a> -->
 
   </div><!-- end nav bar header  -->
 
@@ -22,44 +20,47 @@
       <li><a ui-sref='habit'>Habit Detail</a></li>
       <li><a ui-sref='list'>Habit List</a></li>
       <li><a ui-sref='report'>Report</a></li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-        <ul class="dropdown-menu" role="menu">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li class="divider"></li>
-          <li><a href="#">Separated link</a></li>
-          <li class="divider"></li>
-          <li><a href="#">One more separated link</a></li>
-        </ul>
-      </li>
+
     </ul>
-    <form class="navbar-form navbar-left" role="search">
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Search">
-      </div>
-      <button type="submit" class="btn btn-default">Submit</button>
-    </form>
+
   </div>      <!-- /.navbar-collapse -->
 
 
 
   <div class="row" ng-hide="display">
-    <label for="room">New Habit Name:</label>
-    <input type="text" id="habitName" ng-model="habit.name" />
-    <label for="room">New Habit Tiny Action:</label>
-    <input type="text" id="room" ng-model="habit.tinyAction" />
-    <label for="room">New Habit Trigger:</label>
-    <input type="text" id="room" ng-model="habit.trigger" />
-    <br />
-    <label for="room">New Habit compliment:</label>
-    <input type="text" id="room" ng-model="habit.compliment" />
-    <!-- <input type="date" id="date" ng-model="habit.date" /> -->
-    <button ng-hide="habit.$id" id="newHabit" ng-click="addHabit(habit)" type="submit" class="btn btn-primary">Add Habit</button>
-    <button ng-show="habit.$id" id="updateHabit" ng-click="updateHabit(habit)" type="submit" class="btn btn-primary">Update Habit</button>
 
+    <form>
+        <div class="form-group">
+          <label for="habitName">New Habit Name:</label>
+          <input type="text" id="habitName" class="form-control" placeholder="habit name" ng-model="habit.name">
+        </div>
+        <div class="form-group">
+          <label for="habitAction">Habit tiny action</label>
+          <input type="text" id="disabledTextInput" class="form-control" placeholder="habit action" ng-model="habit.tinyAction">
+        </div>
+        <div class="form-group">
+          <label for="habitTrigger">Habit Trigger/pre step</label>
+          <input type="text" id="habitTrigger" class="form-control" placeholder="habit trigger" ng-model="habit.trigger">
+        </div>
+        <div class="form-group">
+          <label for="habitReward">Habit Trigger/pre step</label>
+          <input type="text" id="habitReward" class="form-control" placeholder="habit Reward" ng-model="habit.compliment">
+        </div>
+         <div class="form-group">
+          <label for="habitReward">habit reward</label>
+          <select id="habitReward" class="form-control" ng-model="habit.compliment">
+            <option>habit reward</option>
+          </select>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox">Complete
+          </label>
+        </div>
+        <button ng-hide="habit.$id" id="newHabit" ng-click="addHabit(habit)" type="submit" class="btn btn-primary">Add Habit</button>
+        <button ng-show="habit.$id" id="updateHabit" ng-click="updateHabit(habit)" type="submit" class="btn btn-primary">Update Habit</button>
 
+    </form>
   </div>
 
 </div><!-- /.container -->
