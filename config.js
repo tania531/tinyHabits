@@ -4,6 +4,7 @@ angular.module("tinyHabits")
 
   $stateProvider
   .state('home', {url:'/', templateUrl: '/views/home/home.html', controller: 'homeCtrl'})
+  .state('new', {url:'/new', templateUrl: '/views/habit/new.html', controller:'habitCtrl'})
   .state('habit', {url:'/habit', templateUrl: '/views/habit/habit.html', controller:'habitCtrl'})
   .state('list', {url:'/list', templateUrl: '/views/list/list.html', controller:'listCtrl'})
   .state('report', {url:'/report', templateUrl: '/views/list/report.html', controller:'reportCtrl'});
