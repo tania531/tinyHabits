@@ -19,6 +19,32 @@ input {
   margin: 10px 20px 10px 5px;
 
 }
+#ctaBtn {
+  margin-top:30px;
+}
+.btn-block{
+  margin:40px;
+  width:65%;
+  margin:auto;
+  padding:20px;
+  font-size: 26px;
+
+}
+#author{
+  font-size: 20px;
+  color:black;
+}
+blockquote {
+  font-size: 36px;
+  color:rgb(121, 13, 42);
+  font-style: italic;
+  font-family: helvetica;
+  font-weight: bold;
+}
+#landingText {
+  font-size:20px;
+  margin:40px;
+}
 
 .navbar-header {
     margin:0;

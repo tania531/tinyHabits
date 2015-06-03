@@ -3,10 +3,7 @@ angular.module("tinyHabits")
   $scope.goToList = function(){
     $state.go('list');
   }
-  console.log('home controller');
+  $scope.startNewHabit = function(){
+    $state.go('new');
+  };
 });
-// .controller('habitCtrl', function($scope, $state){
-//   $scope.goToList = function(){
-//     $state.go('new');
-//   }
-// });
