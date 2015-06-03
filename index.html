@@ -13,17 +13,19 @@
   <!-- AngularFire -->
   <script src="https://cdn.firebase.com/libs/angularfire/1.1.1/angularfire.min.js"></script>
   <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <ng-include src="'views/nav/nav.html'"></ng-include>
+    <div ui-view></div>
+
+  </div>
+  <script src='bower_components/angular-ui-router/release/angular-ui-router.min.js'></script>
   <script src="app.js"></script>
   <script src="config.js"></script>
   <script src="/views/list/list.js"></script>
+  <script src="/views/habit/habit.js"></script>
   <script src="/views/home/home.js"></script>
-</head>
-<body>
-
-  <div ui-view></div>
-
-
-  <script src='bower_components/angular-ui-router/release/angular-ui-router.min.js'></script>
 
 </body>
 

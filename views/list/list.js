@@ -32,8 +32,8 @@ angular.module("tinyHabits")
     });
 
     $scope.habit = {};
-    console.log('new bs form: ',$scope.habitList);
   };
+
   $scope.editHabit = function(habit){
 
     $scope.habit = habit;
