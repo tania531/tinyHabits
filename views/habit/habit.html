@@ -1,16 +1,6 @@
 <div class="container">
-  <div class="row" ng-hide="display">
-    <label for="room">New Habit Name:</label>
-    <input type="text" id="habitName" ng-model="habit.name" />
-    <label for="room">New Habit Tiny Action:</label>
-    <input type="text" id="room" ng-model="habit.tinyAction" />
-    <label for="room">New Habit Trigger:</label>
-    <input type="text" id="room" ng-model="habit.trigger" />
-    <br />
-    <label for="room">New Habit compliment:</label>
-    <input type="text" id="room" ng-model="habit.compliment" />
-    <!-- <input type="date" id="date" ng-model="habit.date" /> -->
-    <button ng-hide="habit.$id" id="newHabit" ng-click="addHabit(habit)" type="submit" class="btn btn-primary">Add Habit</button>
-    <button ng-show="habit.$id" id="updateHabit" ng-click="updateHabit(habit)" type="submit" class="btn btn-primary">Update Habit</button>
+  <div class="row" >
+    <div class="col-md-6 col-sm-6">Habit Details</div>
+    <div class="col-md-6 col-sm-6">Habit specs </div>
   </div>
 </div><!-- /.container -->
